@@ -20,7 +20,8 @@ const DetailsPage = () => {
 export default DetailsPage;
 
 const todoLoader = async (todoId) => {
-  const response = await fetch(`http://192.168.1.3:3000/todos/${todoId}`);
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
+  const response = await fetch(`${baseUrl}/todos/${todoId}`);
 
   if (!response.ok) {
     throw new Response(

@@ -16,8 +16,9 @@ const SubTodoDetails = ({ subTodo }) => {
   const { modalIsVisible, openModal } = useContext(ModalContext);
 
   const checkSubTodo = async () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL
     const response = await fetch(
-      `http://192.168.1.3:3000/todos/${todoId}/sub-todos/${id}/toggle-check`,
+      `${baseUrl}/todos/${todoId}/sub-todos/${id}/toggle-check`,
       {
         method: "PATCH",
       }

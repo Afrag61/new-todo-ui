@@ -73,7 +73,8 @@ export const todoAction = async ({ request, params }) => {
     isChecked: false,
     subTodos: [],
   };
-  let url = `http://192.168.1.3:3000/todos/add-todo`;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
+  let url = `${baseUrl}/todos/add-todo`;
 
   if (method === "PATCH") {
     todoData = {
@@ -82,7 +83,7 @@ export const todoAction = async ({ request, params }) => {
       dueDateTime: data.get("dueDate"),
     };
 
-    url = `http://192.168.1.3:3000/todos/${id}`;
+    url = `${baseUrl}/todos/${id}`;
   }
 
   let errors = [];
@@ -143,7 +144,8 @@ export const subTodoAction = async ({ request, params }) => {
     dueDateTime: data.get("dueDate"),
     isChecked: false,
   };
-  let url = `http://192.168.1.3:3000/todos/${todoId}/sub-todos/add-sub-todo`;
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
+  let url = `${baseUrl}/todos/${todoId}/sub-todos/add-sub-todo`;
 
   if (method === "PATCH") {
     subTodoData = {
@@ -152,7 +154,7 @@ export const subTodoAction = async ({ request, params }) => {
       dueDateTime: data.get("dueDate"),
     };
 
-    url = `http://192.168.1.3:3000/todos/${todoId}/sub-todos/${subTodoId}`;
+    url = `${baseUrl}/todos/${todoId}/sub-todos/${subTodoId}`;
   }
 
   let errors = [];

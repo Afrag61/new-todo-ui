@@ -21,7 +21,8 @@ const HomePage = () => {
 export default HomePage;
 
 const loadTodos = async () => {
-  const response = await fetch("http://192.168.1.3:3000/todos");
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
+  const response = await fetch(`${baseUrl}/todos`);
 
   if (!response.ok) {
     throw new Response(JSON.stringify({ message: "Could not load todos!" }), {

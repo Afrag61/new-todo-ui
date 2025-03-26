@@ -1,0 +1,811 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Edu+AU+VIC+WA+NT+Arrows:wght@400..700&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Jaro:opsz@6..72&family=Lacquer&family=Lobster&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Protest+Revolution&family=Silkscreen:wght@400;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  background-image: url(./assets/background.jpg);
+  background-size: 100%;
+  /* background-attachment: scroll; */
+  width: 100%;
+  height: 100%;
+  /* font-family: 'Courier New', Courier, monospace; */
+  background-color: #000022;
+  color: #006fee;
+  font-size: 16px;
+}
+
+body {
+  /* padding: 10px; */
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header-container {
+  margin-bottom: 20px;
+}
+
+.header-container h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 4rem;
+}
+
+.form-container {
+  backdrop-filter: blur(50px);
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 50%;
+  border-radius: 8px;
+  box-shadow: -15px 15px 50px #000011;
+  margin-bottom: 100px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #a200ff;
+  background-color: #0000002f;
+}
+
+.form-container h1 {
+  color: #a200ff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: 0 0 20px 0;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid #a200ff;
+}
+
+.form-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* gap: 40px; */
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.input-container label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #006fee;
+}
+
+.input {
+  border: 0;
+  color: #006fee;
+  outline: none;
+  height: 40px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 4px;
+  padding: 0 8px;
+  border: 2px solid #05050586;
+  background-color: #05050548;
+}
+
+.input:focus {
+  border: 2px solid #006fee;
+  background-color: #05050586;
+}
+
+.textarea-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.textarea-container label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000022;
+}
+
+.textarea {
+  border: 0;
+  border-radius: 4px;
+  border: 2px solid #05050586;
+  background-color: #05050548;
+  color: #006fee;
+  outline: none;
+  height: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 8px;
+  resize: none;
+  height: 100px;
+}
+
+.textarea:focus {
+  border: 2px solid #006fee;
+  background-color: #05050586;
+}
+
+.date-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.date-container label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000022;
+}
+
+.date-container input {
+  border-radius: 4px;
+  border: 2px solid #05050586;
+  background-color: #05050548;
+  color: #006fee;
+  outline: none;
+  height: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 8px;
+}
+
+.date-container input:focus {
+  border: 2px solid #006fee;
+  background-color: #05050586;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+
+.save {
+  background-color: transparent;
+  width: 80px;
+  height: 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 0;
+  border-radius: 5px;
+  color: #006fee;
+}
+
+.save:hover {
+  cursor: pointer;
+  background-color: #a200ff;
+  color: white;
+}
+
+.reset {
+  background-color: transparent;
+  width: 80px;
+  height: 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 0;
+  border-radius: 5px;
+  color: #006fee;
+}
+
+.reset:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.errors li {
+  list-style: inside square;
+  margin: 2px;
+  /* font-weight: bold; */
+  color: #e20000;
+}
+
+.error {
+  border-color: #e20000;
+}
+
+.todos-container {
+  /* backdrop-filter: blur(10px); */
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0000002f;
+  width: 70%;
+  border-radius: 8px;
+  padding: 10px;
+  border: 1px solid #006fee;
+  box-shadow: -15px 15px 50px #000011;
+}
+
+.todos-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid #006fee;
+  margin-bottom: 20px;
+}
+
+.todos-list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 20px;
+}
+
+.todo-item {
+  color: #006fee;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+
+.todo-pref {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.todo-title {
+  margin: 0;
+  font-size: 1.5rem;
+  /* font-weight: bold; */
+}
+
+.todo-title a {
+  text-decoration: none;
+  color: #006fee;
+}
+
+.todo-title:hover {
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.buttons button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.buttons button:hover {
+  cursor: pointer;
+}
+
+.todo-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-details p {
+  color: #006fee;
+  border-bottom: 1px dashed #a200ff;
+  padding-top: 32px;
+  margin: 0;
+  /* font-weight: bold; */
+}
+
+.details-container {
+  /* backdrop-filter: blur(50px); */
+  width: 70%;
+  border: 1px solid #006fee;
+  border-radius: 8px;
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 50px;
+  box-shadow: -15px 15px 50px #000011;
+  background-color: #0000002f;
+}
+
+.details-container h1 {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #006fee;
+}
+
+.details-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 20px;
+  /* margin-bottom: 20px; */
+  border-bottom: 1px dashed #a200ff;
+}
+
+.details-item h3 {
+  margin: 0;
+}
+
+.details-buttons {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.control-details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  /* width: 20%; */
+  gap: 30px;
+}
+
+.control-details button {
+  height: 35px;
+  width: 80px;
+  border-radius: 4px;
+  border: 0;
+  background-color: transparent;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.control-details .delete {
+  background-color: #a200ff;
+  color: white;
+}
+
+.control-details .delete:hover {
+  cursor: pointer;
+  background-color: rgb(185, 0, 0);
+}
+
+.control-details .edit {
+  border: 0;
+  border-radius: 4px;
+  background-color: #a200ff;
+  color: white;
+}
+
+.control-details .edit:hover {
+  background-color: #6b00a8;
+  color: white;
+  cursor: pointer;
+}
+
+.check-container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+}
+
+.check-button {
+  /* height: 35px; */
+  width: 45px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  :hover {
+    cursor: pointer;
+  }
+}
+
+.details-buttons img {
+  width: 100%;
+  height: 100%;
+}
+
+.subtodos-container {
+  width: 70%;
+  justify-self: center;
+  /* backdrop-filter: blur(50px); */
+  border: 1px solid #006fee;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 50px;
+  box-shadow: -15px 15px 50px #000011;
+  background-color: #0000002f;
+}
+
+.subtodos-container > h1 {
+  width: 100%;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #006fee;
+}
+
+.subtodos-list {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.subtodo-item {
+  color: #006fee;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 100%;
+}
+
+.subtodo-pref {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.subtodo-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.subtodo-title a {
+  text-decoration: none;
+  color: #006fee;
+}
+
+.subtodo-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+.subtodo-buttons button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.subtodo-buttons button:hover {
+  cursor: pointer;
+}
+
+.subtodo-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtodo-details p {
+  color: #006fee;
+  border-bottom: 1px dashed #a200ff;
+  padding-top: 32px;
+  margin: 0;
+  /* font-weight: bold; */
+}
+
+.history-container {
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  border: 1px solid #006fee;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.history-container h1 {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #006fee;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.back-button {
+  width: 80px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  color: #006fee;
+  background-color: #0000006b;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  cursor: pointer;
+  border: 2px solid white;
+  color: white;
+}
+
+.create-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-container a {
+  text-decoration: none;
+}
+
+.create-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 5px;
+  height: 35px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: 0;
+  border-radius: 4px;
+  background-color: #0000006b;
+  color: #006fee;
+  padding: 10px;
+}
+
+.create-button:hover {
+  cursor: pointer;
+  background-color: #00000096;
+  border: 2px solid #006fee;
+}
+
+.backdrop {
+  backdrop-filter: blur(10px);
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000096;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 50%;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1px solid #006fee;
+  padding: 10px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #006fee;
+}
+
+.modal-header h1 {
+  width: 95%;
+  text-align: center;
+  margin: 10px 0 0 0;
+  padding-bottom: 10px;
+  font-size: x-large;
+}
+
+.modal-header .close {
+  border: 0;
+  background: transparent;
+}
+
+.modal-header .close:hover {
+  cursor: pointer;
+}
+
+.modal p {
+  font-size: normal;
+  /* font-weight: bold; */
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+
+.modal-buttons button {
+  width: 90px;
+  height: 35px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.modal-buttons .edit {
+  border: 0;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #006fee;
+}
+
+.modal-buttons .edit:hover {
+  background-color: #a200ff;
+  color: white;
+  cursor: pointer;
+}
+
+.modal-buttons .delete {
+  border: 0;
+  border-radius: 4px;
+  color: #006fee;
+  background-color: transparent;
+}
+
+.modal-buttons .delete:hover {
+  cursor: pointer;
+  background-color: #e20000;
+  border-color: #e20000;
+  color: white;
+}
+
+.delete-text {
+  text-align: center;
+  font-weight: bold;
+}
+
+.todo-delete {
+  text-align: center;
+  margin-top: 0;
+}
+
+.delete-confirm {
+  display: flex;
+  align-self: center;
+  gap: 50px;
+}
+
+.delete-confirm button {
+  width: 80px;
+  height: 30px;
+  font-size: 1rem;
+  border: 2px solid #006fee;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #006fee;
+  font-weight: bold;
+}
+
+.delete-yes:hover {
+  cursor: pointer;
+  background-color: #e20000;
+  color: white;
+  border-color: #e20000;
+}
+
+.delete-no:hover {
+  cursor: pointer;
+  background-color: #00ac00;
+  color: white;
+  border-color: #00ac00;
+}
+
+.tasks {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tasks h3 {
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #006fee;
+  border-top: 1px solid #006fee;
+}
+
+@media (max-width: 500px) {
+  .form-container {
+    width: 90%;
+  }
+  .form-container h1 {
+    font-size: 1.5rem;
+  }
+  .input-container label {
+    font-size: 1.2rem;
+  }
+  .textarea-container label {
+    font-size: 1.2rem;
+  }
+  .date-container label {
+    font-size: 1.2rem;
+  }
+  .date-container input {
+    width: 100%;
+  }
+  .errors li {
+    font-size: 0.9rem;
+  }
+  .todos-container {
+    width: 90%;
+  }
+  .todos-header {
+    font-size: 1.6rem;
+    padding: 0 0 10px 0;
+  }
+  .todo-item {
+    padding-left: 5px;
+  }
+  .todo-title {
+    font-size: 1.2rem;
+  }
+  .todo-details p {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: capitalize;
+    border-width: 2px;
+  }
+  .modal {
+    width: 85%;
+    border-radius: 4px;
+  }
+  .modal-header h1 {
+    border-width: 1px;
+  }
+}

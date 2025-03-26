@@ -1,0 +1,91 @@
+.authFormContainer {
+  backdrop-filter: blur(50px);
+  background-color: #0000002f;
+  width: 60%;
+  display: flex;
+  flex-flow: column;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #a200ff;
+  border-radius: 8px;
+  margin-top: 150px;
+}
+
+.authFormContainer form {
+  width: 100%;
+}
+
+.authFormContainer h1 {
+  text-align: center;
+  border-bottom: 1px solid #a200ff;
+  padding-bottom: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.input {
+  border: 0;
+  color: #006fee;
+  outline: none;
+  height: 40px;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 4px;
+  padding: 0 8px;
+  border: 2px solid #05050586;
+  background-color: #05050548;
+}
+
+.input:focus {
+  border: 2px solid #006fee;
+  background-color: #05050586;
+}
+
+.btnContainer {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 15px;
+}
+
+.btnLogin {
+  /* align-self: center; */
+  width: 80px;
+  height: 35px;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  background-color: #a200ff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btnLogin:hover {
+  cursor: pointer;
+  background-color: #7600bb;
+}
+
+.btnSignup {
+  width: 80px;
+  height: 35px;
+  background-color: transparent;
+  border: 0;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.btnSignup:hover {
+  cursor: pointer;
+  color: #006fee;
+  text-decoration: underline;
+  background-color: #00000057;
+}

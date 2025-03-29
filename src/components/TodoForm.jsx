@@ -2,7 +2,6 @@ import Submit from "./Submit";
 import Reset from "./Reset";
 import { Form, useActionData, Link, redirect } from "react-router";
 import { isEmpty, isNotBetween } from "./../validation";
-import log from "./../../Print";
 
 const TodoForm = ({ type, method, todo }) => {
   const errors = useActionData();
@@ -66,6 +65,7 @@ export const todoAction = async ({ request, params }) => {
   const id = params.todoId;
   const data = await request.formData();
   const method = request.method;
+  const token = localStorage.getItem("token");
   let todoData = {
     title: data.get("title"),
     description: data.get("description"),
@@ -73,7 +73,7 @@ export const todoAction = async ({ request, params }) => {
     isChecked: false,
     subTodos: [],
   };
-  const baseUrl = import.meta.env.VITE_API_BASE_URL
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   let url = `${baseUrl}/todos/add-todo`;
 
   if (method === "PATCH") {
@@ -116,6 +116,7 @@ export const todoAction = async ({ request, params }) => {
     method: method,
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(todoData),
   });
@@ -137,6 +138,7 @@ export const subTodoAction = async ({ request, params }) => {
   const { todoId, subTodoId } = params;
   const data = await request.formData();
   const method = request.method;
+  const token = localStorage.getItem("token");
 
   let subTodoData = {
     title: data.get("title"),
@@ -144,7 +146,7 @@ export const subTodoAction = async ({ request, params }) => {
     dueDateTime: data.get("dueDate"),
     isChecked: false,
   };
-  const baseUrl = import.meta.env.VITE_API_BASE_URL
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
   let url = `${baseUrl}/todos/${todoId}/sub-todos/add-sub-todo`;
 
   if (method === "PATCH") {
@@ -187,6 +189,7 @@ export const subTodoAction = async ({ request, params }) => {
     method: method,
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(subTodoData),
   });

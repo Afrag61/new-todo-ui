@@ -1,10 +1,10 @@
-import { Outlet, redirect, useNavigate } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { lazy, Suspense, useContext, useEffect } from "react";
 
 import ModalContext from "../store/ModalContext";
 import MainNav from "../components/MainNav";
 import Loader from "../components/Loader";
-// import DeleteModal from "../components/DeleteModal";
+import Header from "../components/Header";
 
 const DeleteModal = lazy(() => import("./../components/DeleteModal"));
 
@@ -13,24 +13,23 @@ const RootLayout = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("login");
-  //   }
-  // }, [token]);
+  useEffect(() => {
+    if (!token) {
+      navigate("/login");
+    }
+  }, [token]);
 
   return (
     <>
-      {/* {token && ( */}
       <>
-        <MainNav />
+        {!token && <Header />}
+        {token && <MainNav />}
         {modalIsVisible && (
           <Suspense fallback={<Loader />}>
             <DeleteModal />
           </Suspense>
         )}
       </>
-      {/* )} */}
       <main
         style={{
           display: "flex",

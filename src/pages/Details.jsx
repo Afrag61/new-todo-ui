@@ -20,8 +20,14 @@ const DetailsPage = () => {
 export default DetailsPage;
 
 const todoLoader = async (todoId) => {
-  const baseUrl = import.meta.env.VITE_API_BASE_URL
-  const response = await fetch(`${baseUrl}/todos/${todoId}`);
+  const token = localStorage.getItem("token");
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const response = await fetch(`${baseUrl}/todos/${todoId}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
 
   if (!response.ok) {
     throw new Response(
@@ -30,7 +36,8 @@ const todoLoader = async (todoId) => {
     );
   } else {
     const resData = await response.json();
-    return resData.todo;
+    const { status, length, data } = resData;
+    return data;
   }
 };
 

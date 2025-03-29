@@ -2,16 +2,17 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { lazy, Suspense } from "react";
 
 import { ModalContextProvider } from "./store/ModalContext";
-import RootLayout from "./pages/Root";
-import HomePage from "./pages/Home";
+// import RootLayout from "./pages/Root";
+// import HomePage from "./pages/Home";
 import ErrorPage from "./pages/Error";
 
-import LoginPage, { SignupPage } from "./pages/Authenticate";
+// import { SignupPage } from "./pages/Authenticate";
 import Loader from "./components/Loader";
 
-// const ModalContextProvider = () =>
-//   import("./store/ModalContext").then((module) => module.ModalContextProvider);
-
+const SignupPage = lazy(() => import("./pages/SignupPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage"));
+const RootLayout = lazy(() => import("./pages/Root"));
+const HomePage = lazy(() => import("./pages/Home"));
 const NewTodoPage = lazy(() => import("./pages/NewTodo"));
 const DetailsPage = lazy(() => import("./pages/Details"));
 const EditPage = lazy(() => import("./pages/Edit"));
@@ -114,9 +115,31 @@ const App = () => {
             },
           ],
         },
-        { path: "login", element: <LoginPage /> },
-        { path: "signup", element: <SignupPage /> },
       ],
+    },
+    {
+      path: "login",
+      element: (
+        <Suspense fallback={<Loader />}>
+          <LoginPage />
+        </Suspense>
+      ),
+      action: ({ request }) =>
+        import("./components/LoginForm").then(({ loginAction }) =>
+          loginAction(request)
+        ),
+    },
+    {
+      path: "signup",
+      element: (
+        <Suspense fallback={<Loader />}>
+          <SignupPage />
+        </Suspense>
+      ),
+      action: ({ request }) =>
+        import("./components/SignupForm").then(({ SignupAction }) =>
+          SignupAction(request)
+        ),
     },
   ]);
 

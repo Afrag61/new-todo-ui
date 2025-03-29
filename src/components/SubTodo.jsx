@@ -15,17 +15,22 @@ const SubTodo = ({ SubTodo }) => {
   const { openModal } = useContext(ModalContext);
   const { title, description, createdOn, dueDateTime, id, isChecked } = SubTodo;
   const [details, setDetails] = useState(false);
+  const token = localStorage.getItem("token");
 
   const handleShowDetails = () => {
     details ? setDetails(false) : setDetails(true);
   };
 
   const checkSubTodo = async () => {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const response = await fetch(
       `${baseUrl}/todos/${todoId}/sub-todos/${id}/toggle-check`,
       {
         method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       }
     );
 

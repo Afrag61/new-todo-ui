@@ -23,13 +23,15 @@ const TodoDetails = ({ todo }) => {
   const navigate = useNavigate();
 
   const checkTodo = async () => {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL
-    const response = await fetch(
-      `${baseUrl}/todos/${id}/toggle-check`,
-      {
-        method: "PATCH",
-      }
-    );
+    const token = localStorage.getItem("token")
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    const response = await fetch(`${baseUrl}/todos/${id}/toggle-check`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Response(JSON.stringify({ message: "Could not check todo!" }), {

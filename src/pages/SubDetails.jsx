@@ -2,7 +2,6 @@ import { Await, useRouteLoaderData } from "react-router";
 import SubTodoDetails from "./../components/SubTodoDetails";
 import { Suspense } from "react";
 import Loader from "../components/Loader";
-import log from "../../Print";
 
 const SubTodoDetailsPage = () => {
   const { subTodo } = useRouteLoaderData("subTodo-details");
@@ -21,8 +20,16 @@ const SubTodoDetailsPage = () => {
 export default SubTodoDetailsPage;
 
 const loadSubTodo = async (todoId, subTodoId) => {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  const token = localStorage.getItem("token");
   const response = await fetch(
-    `http://localhost:3000/todos/${todoId}/sub-todos/${subTodoId}`
+    `${baseUrl}/todos/${todoId}/sub-todos/${subTodoId}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
   );
 
   if (!response.ok) {

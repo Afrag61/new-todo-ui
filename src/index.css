@@ -231,7 +231,14 @@ body {
 }
 
 .error {
-  border-color: #e20000;
+  color: #e20000;
+}
+
+.success{
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  color: #00ff00;
 }
 
 .todos-container {

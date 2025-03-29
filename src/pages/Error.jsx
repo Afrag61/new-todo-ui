@@ -5,8 +5,6 @@ import { useRouteError } from "react-router";
 const ErrorPage = () => {
   const error = useRouteError();
 
-  console.log("[[][]] The Error:", error);
-
   let title = "An error occurred !";
   let message = "Something went wring !";
 

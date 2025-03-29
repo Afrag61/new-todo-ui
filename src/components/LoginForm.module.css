@@ -11,7 +11,7 @@
   padding: 10px;
   border: 1px solid #a200ff;
   border-radius: 8px;
-  margin-top: 150px;
+  margin-top: 100px;
 }
 
 .authFormContainer form {
@@ -22,6 +22,9 @@
   text-align: center;
   border-bottom: 1px solid #a200ff;
   padding-bottom: 20px;
+  margin: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .container {

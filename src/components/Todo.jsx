@@ -29,13 +29,15 @@ const Todo = ({ todo }) => {
   };
 
   const checkTodo = async () => {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL
-    const response = await fetch(
-      `${baseUrl}/todos/${id}/toggle-check`,
-      {
-        method: "PATCH",
-      }
-    );
+    const token = localStorage.getItem("token");
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+    const response = await fetch(`${baseUrl}/todos/${id}/toggle-check`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Response(JSON.stringify({ message: "Could not check todo!" }), {
@@ -77,22 +79,22 @@ const Todo = ({ todo }) => {
             </button>
           </div>
         </div>
-          {details && (
-            <div
-              initial={{ y: -30, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -30, opacity: 0 }}
-              className="todo-details"
-            >
-              {description ? <p>Description: {description}</p> : undefined}
-              {createdOn ? (
-                <p>Created on: {new Date(createdOn).toLocaleString()}</p>
-              ) : undefined}
-              {dueDateTime ? (
-                <p>Due Date: {new Date(dueDateTime).toLocaleString()}</p>
-              ) : undefined}
-            </div>
-          )}
+        {details && (
+          <div
+            initial={{ y: -30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -30, opacity: 0 }}
+            className="todo-details"
+          >
+            {description ? <p>Description: {description}</p> : undefined}
+            {createdOn ? (
+              <p>Created on: {new Date(createdOn).toLocaleString()}</p>
+            ) : undefined}
+            {dueDateTime ? (
+              <p>Due Date: {new Date(dueDateTime).toLocaleString()}</p>
+            ) : undefined}
+          </div>
+        )}
       </li>
     </>
   );

@@ -5,10 +5,8 @@ import ModalContext from "../store/ModalContext";
 
 import nonCheckedIco from "./../assets/noneCheck.svg";
 import checkedIco from "./../assets/checked.svg";
-import log from "../../Print";
 
 const SubTodoDetails = ({ subTodo }) => {
-  log(subTodo);
   const { title, description, dueDateTime, createdOn, isChecked, id } = subTodo;
   const todoId = useParams().todoId;
   const navigate = useNavigate();
@@ -16,11 +14,16 @@ const SubTodoDetails = ({ subTodo }) => {
   const { modalIsVisible, openModal } = useContext(ModalContext);
 
   const checkSubTodo = async () => {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL
+    const token = localStorage.getItem("token");
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
     const response = await fetch(
       `${baseUrl}/todos/${todoId}/sub-todos/${id}/toggle-check`,
       {
         method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
       }
     );
 

@@ -13,12 +13,12 @@ export const ModalContextProvider = ({ children }) => {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState({
     title: undefined,
-    id: undefined,
+    todoId: undefined,
     subTodoId: undefined,
   });
 
-  const openModal = (id, title, subTodoId) => {
-    setSelectedTodo({ id, title, subTodoId });
+  const openModal = (todoId, title, subTodoId) => {
+    setSelectedTodo({ todoId, title, subTodoId });
     setModalIsVisible(true);
   };
 

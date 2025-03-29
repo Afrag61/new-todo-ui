@@ -21,16 +21,24 @@ const HomePage = () => {
 export default HomePage;
 
 const loadTodos = async () => {
-  const baseUrl = import.meta.env.VITE_API_BASE_URL
-  const response = await fetch(`${baseUrl}/todos`);
-
-  if (!response.ok) {
-    throw new Response(JSON.stringify({ message: "Could not load todos!" }), {
-      status: 500,
+  const token = localStorage.getItem("token");
+  const baseUrl = import.meta.env.VITE_API_BASE_URL;
+  if (token) {
+    const response = await fetch(`${baseUrl}/todos`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
-  } else {
-    const resData = await response.json();
-    return resData.todos;
+
+    if (!response.ok) {
+      throw new Response(JSON.stringify({ message: "Could not load todos!" }), {
+        status: 500,
+      });
+    } else {
+      const resData = await response.json();
+      const { status, length, data } = resData;
+      return data;
+    }
   }
 };
 
